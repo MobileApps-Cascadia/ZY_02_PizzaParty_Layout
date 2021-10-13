@@ -7,19 +7,28 @@
     tools:context=".MainActivity">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="4dp"
         android:text="@string/number_of_people"
-        android:textSize="24sp" />
+        android:textSize="24sp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/num_attend_edit_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
         android:ems="5"
+        android:hint="@string/_10"
         android:importantForAutofill="no"
-        android:hint="@string/_10" />
+        android:inputType="number"
+        android:minHeight="48dp"
+        app:layout_constraintBaseline_toBaselineOf="@id/textView"
+        app:layout_constraintLeft_toRightOf="@id/textView"
+        app:margi="24dp" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -27,29 +36,41 @@
         android:layout_marginTop="20dp"
         android:text="@string/how_hungry"
         android:textSize="24sp"
-        android:labelFor="@id/hungry_radio_group" />
+        android:labelFor="@id/hungry_radio_group"
+        android:id="@+id/hungrytextview"
+        app:layout_constraintTop_toBottomOf="@id/num_attend_edit_text"
+        app:layout_constraintStart_toStartOf="@id/textView"
+        app:layout_constraintStart_toEndOf="parent"/>
 
     <RadioGroup
         android:id="@+id/hungry_radio_group"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        app:layout_constraintTop_toBottomOf="@id/hungrytextview"
+        app:layout_constraintStart_toStartOf="@id/hungrytextview"
+        >
+
         <RadioButton
             android:id="@+id/light_radio_button"
             android:text="@string/light"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+           />
+
         <RadioButton
             android:id="@+id/medium_radio_button"
-            android:text="@string/medium"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:checked="true" />
+            android:checked="true"
+            android:text="@string/medium"
+            />
+
         <RadioButton
             android:id="@+id/ravenous_radio_button"
-            android:text="@string/ravenous"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="@string/ravenous" />
     </RadioGroup>
 
     <TextView
@@ -58,22 +79,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:textSize="24sp"/>
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@id/calc_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        />
 
     <Button
         android:id="@+id/calc_button"
         android:text="@string/calculate"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:onClick="calculateClick" />
+        android:onClick="calculateClick"
+        app:layout_constraintTop_toBottomOf="@id/hungry_radio_group"
+        app:layout_constraintEnd_toEndOf="parent"/>
 
     <ImageView
         android:id="@+id/pizza"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="28dp"
         android:contentDescription="@string/pizza_background"
         android:scaleType="fitEnd"
         android:src="@drawable/pizza"
-        tools:ignore="ImageContrastCheck" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="ImageContrastCheck"
+        tools:layout_editor_absoluteX="-16dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
